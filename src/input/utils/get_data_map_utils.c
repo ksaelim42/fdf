@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:45:11 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/05/02 21:30:44 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/05/03 11:53:22 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_open(char **file)
 	fd = open(*file, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("fd error\n");
+		ft_putstr_fd("fd error\n", 1);
 		exit(-1);
 	}
 	return (fd);

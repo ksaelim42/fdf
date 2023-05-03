@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:32:18 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/05/03 00:02:09 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/05/03 11:29:49 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static int	check_char(char *s, char c)
 	return (0);
 }
 
+void	call_scale(t_map *map)
+{
+	while (map->col * map->scale < 1512 && map->row * map->scale < 370)
+		map->scale += 5;
+}
+
 void	point_xyz(t_data *data)
 {
 	data->j = 0;
@@ -33,7 +39,14 @@ void	point_xyz(t_data *data)
 		if (check_char(data->split[data->j], ','))
 			data->node[data->i].color = ft_atoi_hex(data->split[data->j]);
 		else
-			data->node[data->i].color = 0x00FFFFFF;
+		{
+			if (data->node[data->i].z < 0)
+				data->node[data->i].color = 0x005A5A5A;
+			else if (data->node[data->i].z > 0)
+				data->node[data->i].color = 0x00AF8FE9;
+			else
+				data->node[data->i].color = 0x00FFFFFF;
+		}
 		data->node[data->i].x = data->j * data->map.scale;
 		data->node[data->i].y = data->k * data->map.scale;
 		data->j++;
@@ -52,7 +65,8 @@ void	sketch_img(t_data *data)
 	data->node = malloc(sizeof(t_node) * data->map.cell);
 	if (!data->node)
 		exit(0);
-	data->map.scale = 10;
+	data->map.scale = 0;
+	call_scale(&data->map);
 	while (data->i < data->map.cell)
 	{
 		data->split = ft_split(data->line->content, ' ');

@@ -6,7 +6,7 @@
 /*   By: ksaelim <ksaelim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:59:43 by ksaelim           #+#    #+#             */
-/*   Updated: 2023/05/03 00:03:01 by ksaelim          ###   ########.fr       */
+/*   Updated: 2023/05/03 08:04:48 by ksaelim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <math.h>
 #include <stdio.h>
 
-/* float	iso_map(float x_map, float y_map, char axis)
+float	iso_map(float x_map, float y_map, char axis)
 {
 	if (axis == 'x')
 		return ((x_map - y_map) * cos(0.8));
@@ -27,8 +27,8 @@ void	iso_xyz(float x, float y, t_node *node)
 {
 	node->x = (x - y) * cos(0.8);
 	node->y = ((x + y) * sin(0.8)) - node->z;
-} */
-
+}
+/* 
 float	iso_map(float x_map, float y_map, char axis)
 {
 	if (axis == 'x')
@@ -42,7 +42,7 @@ void	iso_xyz(float x, float y, t_node *node)
 {
 	node->x = (x - y) * cos(0.523599);
 	node->y = (x + y) * sin(0.523599) - node->z;
-}
+} */
 
 void	call_center(t_data *data)
 {
